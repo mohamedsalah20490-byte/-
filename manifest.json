@@ -1,0 +1,11 @@
+{
+  "name": "ماركت الخير",
+  "short_name": "ماركت الخير",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8fafb",
+  "theme_color": "#17202a",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": []
+}
