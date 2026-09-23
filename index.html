@@ -92,5 +92,74 @@ function closeScanner(){document.getElementById("scanner").style.display="none";
 renderProducts();renderCart();update();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script>
+<script>
+(function(){
+  const box=document.querySelector('#stock');
+  if(!box) return;
+
+  const title=box.querySelector('.title');
+  const btn=document.createElement('button');
+  btn.className='primary';
+  btn.textContent='➕ إضافة صنف جديد';
+  btn.style.margin='10px 0';
+  title.after(btn);
+
+  btn.onclick=function(){
+    let old=document.getElementById('mkAddBox');
+    if(old){old.remove();return;}
+
+    const d=document.createElement('div');
+    d.id='mkAddBox';
+    d.className='box';
+    d.innerHTML=`
+      <h3>إضافة صنف جديد</h3>
+      <input id="mkN" placeholder="اسم الصنف">
+      <input id="mkC" placeholder="الباركود (اختياري)">
+      <input id="mkB" type="number" placeholder="سعر الشراء">
+      <input id="mkS" type="number" placeholder="سعر البيع">
+      <input id="mkQ" type="number" placeholder="الكمية">
+      <input id="mkM" type="number" placeholder="حد التنبيه">
+      <button class="primary" id="mkSave">💾 حفظ الصنف</button>
+    `;
+    box.insertBefore(d,box.querySelector('#stockList'));
+
+    document.getElementById('mkSave').onclick=function(){
+      let products=JSON.parse(localStorage.getItem('mk_products')||'[]');
+
+      let name=document.getElementById('mkN').value.trim();
+      let code=document.getElementById('mkC').value.trim();
+      let buy=Number(document.getElementById('mkB').value||0);
+      let sell=Number(document.getElementById('mkS').value||0);
+      let qty=Number(document.getElementById('mkQ').value||0);
+      let min=Number(document.getElementById('mkM').value||0);
+
+      if(!name || sell<=0){
+        alert('اكتب اسم الصنف وسعر البيع');
+        return;
+      }
+
+      if(!code) code='MK'+Date.now();
+
+      if(products.some(p=>String(p.id)===code)){
+        alert('الباركود موجود بالفعل');
+        return;
+      }
+
+      products.push({
+        id:code,
+        name:name,
+        buy:buy,
+        sell:sell,
+        qty:qty,
+        min:min
+      });
+
+      localStorage.setItem('mk_products',JSON.stringify(products));
+      alert('تمت إضافة الصنف بنجاح ✅');
+      location.reload();
+    };
+  };
+})();
+</script>
 </body>
 </html>
