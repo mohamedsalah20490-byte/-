@@ -3,163 +3,165 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#17202a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="ماركت الخير">
-<link rel="manifest" href="manifest.json">
-<title>ماركت الخير</title>
+<meta name="theme-color" content="#0f172a">
+<title>ماركت الخير - نظام الكاشير</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f6f8;color:#17202a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif}.app{max-width:560px;margin:auto;min-height:100vh;background:#f8fafb}header{background:#fff;padding:20px 16px 14px;border-bottom:1px solid #e4e8ec;position:sticky;top:0;z-index:4}.brand{font-size:24px;font-weight:900}.sub{font-size:12px;color:#6b7280;margin-top:3px}main{padding:14px 13px 95px}.view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card,.box{background:#fff;border:1px solid #e5e9ed;border-radius:16px;padding:14px}.label{font-size:12px;color:#6b7280}.big{font-size:22px;font-weight:900;margin-top:6px}.title{font-size:17px;font-weight:900;margin:17px 2px 9px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{background:#fff;border:1px solid #e5e9ed;border-radius:16px;padding:15px;text-align:right;font-weight:800}.ico{font-size:24px;display:block;margin-bottom:7px}.muted{font-size:12px;color:#78818a;font-weight:500}.search{width:100%;border:1px solid #dce2e7;border-radius:13px;padding:13px;background:#fff;font-size:16px;outline:none}.products{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.product{background:#fff;border:1px solid #e5e9ed;border-radius:14px;padding:11px}.product b{display:block}.product small{color:#727b84}.product button,.primary{width:100%;border:0;border-radius:11px;padding:11px;margin-top:8px;background:#17202a;color:#fff;font-weight:800}.cart{margin-top:12px}.line{display:flex;justify-content:space-between;border-bottom:1px solid #edf0f2;padding:10px 0}.total{font-size:21px;font-weight:900;padding-top:12px}.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.pay button{border:1px solid #dce2e7;border-radius:11px;padding:12px;background:#fff;font-weight:800}.pay .on{background:#17202a;color:#fff}.danger{background:#fff;border:1px solid #f0c9c9;color:#a33;border-radius:10px;padding:7px}.back{border:0;background:#edf1f4;border-radius:10px;padding:9px 12px;font-weight:800;margin-bottom:9px}.list{margin-top:10px}.item{background:#fff;border:1px solid #e5e9ed;border-radius:13px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}.empty{text-align:center;color:#7b848c;padding:25px}.scan{background:#17202a;color:#fff;border:0;border-radius:12px;padding:12px;width:100%;font-weight:800;margin-top:9px}nav{position:fixed;bottom:0;left:0;right:0;max-width:560px;margin:auto;background:#fff;border-top:1px solid #e3e7eb;display:grid;grid-template-columns:repeat(4,1fr);padding:7px 6px calc(7px + env(safe-area-inset-bottom));z-index:5}nav button{border:0;background:none;padding:6px 2px;font-size:11px;color:#6b7280;font-weight:800}nav button.active{color:#17202a}
-#scanner{display:none;position:fixed;inset:0;background:#000;z-index:20;color:#fff;padding:18px}.scannerBox{height:70vh;border:2px solid #fff;border-radius:18px;margin-top:25px;overflow:hidden}video{width:100%;height:100%;object-fit:cover}.close{position:absolute;top:15px;left:15px;border:0;border-radius:10px;padding:10px}
+:root{--bg:#f4f6f8;--card:#fff;--ink:#17202a;--muted:#6b7280;--line:#e5e7eb;--ok:#16794c;--danger:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif}.app{max-width:650px;margin:auto;min-height:100vh;background:#f8fafb}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:16px}.brand{font-size:23px;font-weight:900}.sub{font-size:12px;color:var(--muted);margin-top:3px}
+main{padding:14px 13px 100px}.view{display:none}.view.active{display:block}.title{font-size:18px;font-weight:900;margin:17px 2px 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.card,.box{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px}.label{font-size:12px;color:var(--muted)}.big{font-size:21px;font-weight:900;margin-top:6px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{border:1px solid var(--line);border-radius:15px;background:#fff;padding:15px;text-align:right;font-weight:900}.ico{font-size:24px;display:block;margin-bottom:6px}.muted{font-size:12px;color:var(--muted);font-weight:500}
+input,select{width:100%;padding:12px;border:1px solid #d8dde3;border-radius:11px;background:#fff;font:inherit;outline:none}button{font:inherit;cursor:pointer}.primary{width:100%;padding:13px;border:0;border-radius:11px;background:var(--ink);color:#fff;font-weight:900;margin-top:9px}.ok{background:var(--ok)}.danger{border:1px solid #efc7c3;background:#fff;color:var(--danger);border-radius:9px;padding:6px 9px}.back{border:0;background:#edf1f4;border-radius:10px;padding:9px 12px;font-weight:800}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.product{background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px}.product b{display:block}.product small{display:block;color:var(--muted);margin-top:4px}.product button{width:100%;border:0;background:var(--ink);color:#fff;border-radius:9px;padding:9px;margin-top:8px}
+.line{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #eef0f2}.line:last-child{border-bottom:0}.total{font-size:22px;font-weight:900;padding-top:11px}.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.pay button{padding:11px;border:1px solid #d8dde3;background:#fff;border-radius:10px;font-weight:800}.pay .on{background:var(--ink);color:#fff}
+.item{background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px;margin:8px 0;display:flex;justify-content:space-between;gap:10px}.empty{text-align:center;color:var(--muted);padding:22px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.formgrid .full{grid-column:1/-1}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}.tabs button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px;font-weight:800}.tabs .on{background:var(--ink);color:#fff}
+nav{position:fixed;bottom:0;left:0;right:0;max-width:650px;margin:auto;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:20}nav button{border:0;background:none;font-size:10px;color:#6b7280;font-weight:800;padding:5px 1px}nav button.active{color:#111827}
+#scanner{display:none;position:fixed;inset:0;background:#000;color:#fff;z-index:50;padding:15px}.scannerbox{height:70vh;margin-top:28px;border:2px solid #fff;border-radius:15px;overflow:hidden}.scannerbox video{width:100%;height:100%;object-fit:cover}.close{position:absolute;top:12px;left:12px;border:0;border-radius:9px;padding:9px}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="brand">ماركت الخير 🛒</div><div class="sub">كاشير • مخزون • أرباح</div></header>
+<header><div class="brand">ماركت الخير 🛒</div><div class="sub">كاشير وحسابات ومخزون</div></header>
 <main>
 <section id="home" class="view active">
 <div class="grid">
-<div class="card"><div class="label">مبيعات اليوم</div><div class="big" id="sales">0 ج</div></div>
-<div class="card"><div class="label">صافي الربح</div><div class="big" id="profit">0 ج</div></div>
-<div class="card"><div class="label">الفواتير</div><div class="big" id="invoiceCount">0</div></div>
-<div class="card"><div class="label">فودافون كاش</div><div class="big" id="vodafone">0 ج</div></div>
+<div class="card"><div class="label">مبيعات اليوم</div><div class="big" id="hSales">0 ج</div></div>
+<div class="card"><div class="label">صافي الربح</div><div class="big" id="hProfit">0 ج</div></div>
+<div class="card"><div class="label">الفواتير</div><div class="big" id="hInvoices">0</div></div>
+<div class="card"><div class="label">فودافون كاش</div><div class="big" id="hVod">0 ج</div></div>
 </div>
 <div class="title">اختصارات</div>
 <div class="actions">
-<button class="action" onclick="go('cashier')"><span class="ico">🛒</span>بيع جديد<div class="muted">فتح الكاشير</div></button>
-<button class="action" onclick="openScanner()"><span class="ico">📷</span>مسح باركود<div class="muted">كاميرا الآيفون</div></button>
+<button class="action" onclick="go('cashier')"><span class="ico">🛒</span>بيع جديد<div class="muted">كاشير</div></button>
+<button class="action" onclick="openScanner()"><span class="ico">📷</span>باركود<div class="muted">كاميرا الآيفون</div></button>
 <button class="action" onclick="go('stock')"><span class="ico">📦</span>المخزون<div class="muted">الأصناف والكميات</div></button>
-<button class="action" onclick="go('reports')"><span class="ico">📊</span>التقارير<div class="muted">المبيعات والأرباح</div></button>
+<button class="action" onclick="go('expenses')"><span class="ico">💸</span>مصروف جديد<div class="muted">تسجيل المصروفات</div></button>
 </div>
-<div class="title">حالة النظام</div><div class="box muted">البيانات تُحفظ على هذا الجهاز في النسخة الحالية. سنضيف النسخ الاحتياطي والمزامنة لاحقًا.</div>
+<div class="title">ملخص اليوم</div><div class="box" id="homeSummary"></div>
 </section>
 
 <section id="cashier" class="view">
 <button class="back" onclick="go('home')">← الرئيسية</button><div class="title">فاتورة بيع</div>
-<input id="q" class="search" placeholder="ابحث باسم الصنف أو الباركود" oninput="renderProducts()">
-<button class="scan" onclick="openScanner()">📷 مسح الباركود بالكاميرا</button>
-<div id="products" class="products"></div>
-<div class="box cart"><b>الفاتورة الحالية</b><div id="cart"></div><div class="total">الإجمالي: <span id="total">0</span> ج</div>
-<div class="pay"><button id="cashBtn" class="on" onclick="payment='cash';paintPay()">💵 نقدي</button><button id="vodBtn" onclick="payment='vodafone';paintPay()">📱 فودافون كاش</button></div>
-<button class="primary" onclick="checkout()">تأكيد البيع</button></div>
+<input id="cashSearch" placeholder="ابحث باسم الصنف أو الباركود" oninput="renderCashProducts()">
+<button class="primary" onclick="openScanner()">📷 مسح باركود</button>
+<div id="cashProducts" class="products"></div>
+<div class="box" style="margin-top:10px"><b>الفاتورة الحالية</b><div id="cart"></div><div class="total">الإجمالي: <span id="cartTotal">0</span> ج</div>
+<div class="pay"><button id="payCash" class="on" onclick="setPayment('cash')">💵 نقدي</button><button id="payVod" onclick="setPayment('vodafone')">📱 فودافون كاش</button></div>
+<button class="primary ok" onclick="finishSale()">تأكيد البيع</button></div>
 </section>
 
 <section id="stock" class="view">
-<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">المخزون</div>
-<div id="stockList" class="list"></div>
+<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">إدارة الأصناف والمخزون</div>
+<div class="box">
+<div class="formgrid">
+<input id="pName" class="full" placeholder="اسم الصنف">
+<input id="pCode" placeholder="الباركود (اختياري)">
+<input id="pBuy" type="number" step="0.01" placeholder="سعر الشراء">
+<input id="pSell" type="number" step="0.01" placeholder="سعر البيع">
+<input id="pQty" type="number" min="0" placeholder="الكمية الحالية">
+<input id="pMin" type="number" min="0" placeholder="حد التنبيه">
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+<button id="productSaveBtn" class="primary" onclick="saveProductForm()">➕ إضافة صنف</button>
+<button id="productCancelBtn" class="danger" style="display:none" onclick="cancelProductEdit()">إلغاء التعديل</button>
+</div>
+<small class="muted" style="display:block;margin-top:8px">لو مفيش باركود، البرنامج هيعمل كود تلقائي للصنف.</small>
+</div>
+<div class="title">تعديل المخزون</div>
+<div class="box">
+<div class="formgrid">
+<select id="adjProduct" class="full" onchange="showAdjustmentQty()"><option value="">اختر الصنف</option></select>
+<select id="adjType"><option value="add">➕ إضافة كمية</option><option value="subtract">➖ خصم كمية</option><option value="set">✏️ تحديد الكمية الجديدة</option></select>
+<input id="adjQty" type="number" min="0" step="1" placeholder="الكمية">
+<input id="adjReason" class="full" placeholder="سبب التعديل (جرد، تالف، نقص...)">
+</div>
+<div id="adjCurrent" class="muted" style="margin-top:8px">اختر الصنف لعرض الكمية الحالية.</div>
+<button class="primary" style="margin-top:8px" onclick="adjustStock()">💾 حفظ تعديل المخزون</button>
+</div>
+<div class="title">سجل تعديلات المخزون</div>
+<div id="adjustmentList"></div>
+<div class="title">الأصناف الحالية</div>
+<input id="stockSearch" placeholder="بحث باسم الصنف أو الباركود" oninput="renderStock()">
+<div id="stockList"></div>
+</section>
+
+<section id="purchases" class="view">
+<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">المشتريات</div>
+<div class="box"><div class="formgrid"><input id="buyCode" placeholder="باركود الصنف"><input id="buyQty" type="number" placeholder="الكمية"><input id="buyCost" type="number" step="0.01" placeholder="سعر الشراء للوحدة"><input id="supplier" placeholder="المورد"></div><button class="primary" onclick="addPurchase()">تسجيل شراء وزيادة المخزون</button></div>
+<div class="title">آخر المشتريات</div><div id="purchaseList"></div>
+</section>
+
+<section id="expenses" class="view">
+<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">المصروفات</div>
+<div class="box"><div class="formgrid"><input id="expName" placeholder="نوع المصروف"><input id="expAmount" type="number" step="0.01" placeholder="المبلغ"><input id="expNote" class="full" placeholder="ملاحظة"></div><button class="primary" onclick="addExpense()">تسجيل المصروف</button></div>
+<div class="title">مصروفات اليوم</div><div id="expenseList"></div>
 </section>
 
 <section id="reports" class="view">
-<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">تقارير اليوم</div>
-<div class="grid"><div class="card"><div class="label">المبيعات</div><div class="big" id="rSales">0 ج</div></div><div class="card"><div class="label">الربح</div><div class="big" id="rProfit">0 ج</div></div></div>
-<div class="title">آخر الفواتير</div><div id="recent" class="list"></div>
+<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">التقارير</div>
+<div class="grid"><div class="card"><div class="label">المبيعات</div><div class="big" id="rSales">0 ج</div></div><div class="card"><div class="label">تكلفة البضاعة</div><div class="big" id="rCost">0 ج</div></div><div class="card"><div class="label">إجمالي المصروفات</div><div class="big" id="rExpenses">0 ج</div></div><div class="card"><div class="label">صافي الربح</div><div class="big" id="rNet">0 ج</div></div></div>
+<div class="title">الفواتير الأخيرة</div><div id="invoiceList"></div>
+</section>
+
+<section id="settings" class="view">
+<button class="back" onclick="go('home')">← الرئيسية</button><div class="title">الإعدادات والبيانات</div>
+<div class="box"><p class="muted">بيانات البرنامج محفوظة محليًا على الجهاز.</p><button class="primary" onclick="exportData()">⬇️ تصدير نسخة احتياطية</button><button class="primary" onclick="document.getElementById('importFile').click()">⬆️ استيراد نسخة احتياطية</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"><button class="primary" style="background:#fff;color:#b42318;border:1px solid #efc7c3" onclick="resetAll()">مسح كل البيانات</button></div>
 </section>
 </main>
-<nav><button onclick="go('home')" data-v="home">🏠<br>الرئيسية</button><button onclick="go('cashier')" data-v="cashier">🛒<br>الكاشير</button><button onclick="go('stock')" data-v="stock">📦<br>المخزون</button><button onclick="go('reports')" data-v="reports">📊<br>التقارير</button></nav>
+<nav>
+<button data-v="home" onclick="go('home')">🏠<br>الرئيسية</button>
+<button data-v="cashier" onclick="go('cashier')">🛒<br>الكاشير</button>
+<button data-v="stock" onclick="go('stock')">📦<br>المخزون</button>
+<button data-v="reports" onclick="go('reports')">📊<br>التقارير</button>
+<button data-v="settings" onclick="go('settings')">⚙️<br>الإعدادات</button>
+</nav>
 </div>
 
-<div id="scanner"><button class="close" onclick="closeScanner()">✕</button><h3>مسح الباركود</h3><div class="scannerBox"><video id="video" playsinline></video></div><p id="scanMsg">وجّه الكاميرا نحو الباركود.</p></div>
+<div id="scanner"><button class="close" onclick="closeScanner()">✕</button><h3>مسح الباركود</h3><div class="scannerbox"><video id="video" playsinline></video></div><p id="scanMsg">وجّه الكاميرا للباركود.</p></div>
 
 <script>
-const defaultProducts=[
-{id:"1001",name:"سكر 1 كجم",buy:25,sell:30,qty:20,min:5},
-{id:"1002",name:"أرز 1 كجم",buy:28,sell:34,qty:18,min:5},
-{id:"1003",name:"زيت 1 لتر",buy:55,sell:62,qty:12,min:4},
-{id:"1004",name:"مياه 1.5 لتر",buy:7,sell:10,qty:30,min:8},
-{id:"1005",name:"شاي",buy:45,sell:52,qty:10,min:3},
-{id:"1006",name:"بسكويت",buy:8,sell:12,qty:25,min:6}
-];
-let products=JSON.parse(localStorage.getItem("mk_products")||"null")||defaultProducts;
-let stats=JSON.parse(localStorage.getItem("mk_stats")||'{"sales":0,"profit":0,"invoices":0,"vodafone":0}') ;
-let invoices=JSON.parse(localStorage.getItem("mk_invoices")||"[]");
+const initial=[
+{id:"1001",name:"سكر 1 كجم",buy:25,sell:30,qty:20,min:5},{id:"1002",name:"أرز 1 كجم",buy:28,sell:34,qty:18,min:5},{id:"1003",name:"زيت 1 لتر",buy:55,sell:62,qty:12,min:4},{id:"1004",name:"مياه 1.5 لتر",buy:7,sell:10,qty:30,min:8},{id:"1005",name:"شاي",buy:45,sell:52,qty:10,min:3},{id:"1006",name:"بسكويت",buy:8,sell:12,qty:25,min:6}];
+let products=JSON.parse(localStorage.getItem("mk_products")||"null")||initial;
+let sales=JSON.parse(localStorage.getItem("mk_sales")||"[]"), purchases=JSON.parse(localStorage.getItem("mk_purchases")||"[]"), expenses=JSON.parse(localStorage.getItem("mk_expenses")||"[]"), adjustments=JSON.parse(localStorage.getItem("mk_adjustments")||"[]");
 let cart=[],payment="cash",stream=null;
-
-const money=n=>Number(n).toFixed(2).replace(".00","");
-function save(){localStorage.setItem("mk_products",JSON.stringify(products));localStorage.setItem("mk_stats",JSON.stringify(stats));localStorage.setItem("mk_invoices",JSON.stringify(invoices))}
-function go(id){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.v===id));if(id==="cashier")renderProducts();if(id==="stock")renderStock();if(id==="reports")renderReports()}
-function renderProducts(){let q=(document.getElementById("q")?.value||"").trim();let arr=products.filter(p=>p.name.includes(q)||p.id.includes(q));document.getElementById("products").innerHTML=arr.map(p=>`<div class="product"><b>${p.name}</b><small>بيع: ${money(p.sell)} ج • مخزون: ${p.qty}</small><button onclick="add('${p.id}')">إضافة</button></div>`).join("")||'<div class="empty">لا يوجد صنف مطابق</div>'}
-function add(id){let p=products.find(x=>x.id===id);if(!p||p.qty<1){alert("الصنف غير متوفر في المخزون");return}let x=cart.find(x=>x.id===id);if(x)x.qty++;else cart.push({id:p.id,name:p.name,sell:p.sell,buy:p.buy,qty:1});renderCart()}
-function renderCart(){let el=document.getElementById("cart");el.innerHTML=cart.length?cart.map((x,i)=>`<div class="line"><span>${x.name} × ${x.qty}</span><span><b>${money(x.sell*x.qty)} ج</b> <button class="danger" onclick="cart.splice(${i},1);renderCart()">حذف</button></span></div>`).join(""):'<div class="empty">الفاتورة فارغة</div>';document.getElementById("total").textContent=money(cart.reduce((s,x)=>s+x.sell*x.qty,0))}
-function paintPay(){cashBtn.classList.toggle("on",payment==="cash");vodBtn.classList.toggle("on",payment==="vodafone")}
-function checkout(){if(!cart.length)return alert("أضف أصنافًا أولًا");let total=cart.reduce((s,x)=>s+x.sell*x.qty,0),profit=cart.reduce((s,x)=>s+(x.sell-x.buy)*x.qty,0);for(const x of cart){let p=products.find(p=>p.id===x.id);p.qty-=x.qty}stats.sales+=total;stats.profit+=profit;stats.invoices++;if(payment==="vodafone")stats.vodafone+=total;invoices.unshift({at:new Date().toLocaleString("ar-EG"),total,profit,payment});invoices=invoices.slice(0,30);save();cart=[];renderCart();update();alert("تم تسجيل البيع ✅")}
-function update(){sales.textContent=money(stats.sales)+" ج";profit.textContent=money(stats.profit)+" ج";invoiceCount.textContent=stats.invoices;vodafone.textContent=money(stats.vodafone)+" ج";rSales.textContent=money(stats.sales)+" ج";rProfit.textContent=money(stats.profit)+" ج"}
-function renderStock(){stockList.innerHTML=products.map(p=>`<div class="item"><span><b>${p.name}</b><br><small>باركود: ${p.id} • بيع: ${money(p.sell)} ج</small></span><b>${p.qty} قطعة${p.qty<=p.min?" ⚠️":""}</b></div>`).join("")}
-function renderReports(){recent.innerHTML=invoices.length?invoices.slice(0,10).map(x=>`<div class="item"><span>${x.at}<br><small>${x.payment==="vodafone"?"فودافون كاش":"نقدي"}</small></span><b>${money(x.total)} ج</b></div>`).join(""):'<div class="empty">لا توجد فواتير حتى الآن</div>'}
-async function openScanner(){document.getElementById("scanner").style.display="block";if(!("BarcodeDetector" in window)){scanMsg.textContent="متصفح الآيفون لا يدعم قراءة الباركود بهذه الطريقة حاليًا. سنضيف قارئًا متوافقًا في النسخة التالية.";return}try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}}});video.srcObject=stream;await video.play();let detector=new BarcodeDetector();scanLoop(detector)}catch(e){scanMsg.textContent="لم يتم السماح بالكاميرا. افتح صلاحية الكاميرا من إعدادات Safari."}}
-async function scanLoop(detector){if(document.getElementById("scanner").style.display==="none")return;try{let codes=await detector.detect(video);if(codes.length){let code=codes[0].rawValue;document.getElementById("q").value=code;closeScanner();go("cashier");renderProducts();return}}catch(e){}requestAnimationFrame(()=>scanLoop(detector))}
-function closeScanner(){document.getElementById("scanner").style.display="none";if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
-renderProducts();renderCart();update();
-if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
-</script>
-<script>
-(function(){
-  const box=document.querySelector('#stock');
-  if(!box) return;
-
-  const title=box.querySelector('.title');
-  const btn=document.createElement('button');
-  btn.className='primary';
-  btn.textContent='➕ إضافة صنف جديد';
-  btn.style.margin='10px 0';
-  title.after(btn);
-
-  btn.onclick=function(){
-    let old=document.getElementById('mkAddBox');
-    if(old){old.remove();return;}
-
-    const d=document.createElement('div');
-    d.id='mkAddBox';
-    d.className='box';
-    d.innerHTML=`
-      <h3>إضافة صنف جديد</h3>
-      <input id="mkN" placeholder="اسم الصنف">
-      <input id="mkC" placeholder="الباركود (اختياري)">
-      <input id="mkB" type="number" placeholder="سعر الشراء">
-      <input id="mkS" type="number" placeholder="سعر البيع">
-      <input id="mkQ" type="number" placeholder="الكمية">
-      <input id="mkM" type="number" placeholder="حد التنبيه">
-      <button class="primary" id="mkSave">💾 حفظ الصنف</button>
-    `;
-    box.insertBefore(d,box.querySelector('#stockList'));
-
-    document.getElementById('mkSave').onclick=function(){
-      let products=JSON.parse(localStorage.getItem('mk_products')||'[]');
-
-      let name=document.getElementById('mkN').value.trim();
-      let code=document.getElementById('mkC').value.trim();
-      let buy=Number(document.getElementById('mkB').value||0);
-      let sell=Number(document.getElementById('mkS').value||0);
-      let qty=Number(document.getElementById('mkQ').value||0);
-      let min=Number(document.getElementById('mkM').value||0);
-
-      if(!name || sell<=0){
-        alert('اكتب اسم الصنف وسعر البيع');
-        return;
-      }
-
-      if(!code) code='MK'+Date.now();
-
-      if(products.some(p=>String(p.id)===code)){
-        alert('الباركود موجود بالفعل');
-        return;
-      }
-
-      products.push({
-        id:code,
-        name:name,
-        buy:buy,
-        sell:sell,
-        qty:qty,
-        min:min
-      });
-
-      localStorage.setItem('mk_products',JSON.stringify(products));
-      alert('تمت إضافة الصنف بنجاح ✅');
-      location.reload();
-    };
-  };
-})();
+const today=()=>new Date().toISOString().slice(0,10), money=n=>Number(n||0).toFixed(2).replace(".00","");
+function save(){localStorage.setItem("mk_products",JSON.stringify(products));localStorage.setItem("mk_sales",JSON.stringify(sales));localStorage.setItem("mk_purchases",JSON.stringify(purchases));localStorage.setItem("mk_expenses",JSON.stringify(expenses));localStorage.setItem("mk_adjustments",JSON.stringify(adjustments))}
+function go(id){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.v===id));renderAll()}
+function todaySales(){return sales.filter(x=>x.date===today())}function todayExp(){return expenses.filter(x=>x.date===today())}
+function totals(){let s=todaySales(),e=todayExp(),salesSum=s.reduce((a,x)=>a+x.total,0),cost=s.reduce((a,x)=>a+x.cost,0),ex=e.reduce((a,x)=>a+x.amount,0);return{sales:salesSum,cost,exp:ex,profit:salesSum-cost-ex}}
+function updateHome(){let t=totals(),s=todaySales();hSales.textContent=money(t.sales)+" ج";hProfit.textContent=money(t.profit)+" ج";hInvoices.textContent=s.length;hVod.textContent=money(s.filter(x=>x.payment==="vodafone").reduce((a,x)=>a+x.total,0))+" ج";homeSummary.innerHTML=`مبيعات: <b>${money(t.sales)} ج</b> — تكلفة البضاعة: <b>${money(t.cost)} ج</b> — مصروفات: <b>${money(t.exp)} ج</b> — صافي الربح: <b>${money(t.profit)} ج</b>`}
+function renderCashProducts(){let q=(cashSearch.value||"").trim();let arr=products.filter(p=>p.name.includes(q)||p.id.includes(q));cashProducts.innerHTML=arr.map(p=>`<div class="product"><b>${p.name}</b><small>${money(p.sell)} ج • المخزون ${p.qty}</small><button onclick="addCart('${p.id}')">إضافة</button></div>`).join("")||'<div class="empty">لا يوجد صنف</div>'}
+function addCart(id){let p=products.find(x=>x.id===id);if(!p||p.qty<1)return alert("الصنف غير متوفر");let x=cart.find(x=>x.id===id);if(x){if(x.qty>=p.qty)return alert("الكمية الموجودة بالمخزون غير كافية");x.qty++}else cart.push({id,name:p.name,sell:p.sell,buy:p.buy,qty:1});renderCart()}
+function renderCart(){cartEl.innerHTML=cart.length?cart.map((x,i)=>`<div class="line"><span>${x.name} × ${x.qty}</span><span><b>${money(x.sell*x.qty)} ج</b> <button class="danger" onclick="cart.splice(${i},1);renderCart()">حذف</button></span></div>`).join(""):'<div class="empty">الفاتورة فارغة</div>';cartTotal.textContent=money(cart.reduce((a,x)=>a+x.sell*x.qty,0))}
+function setPayment(p){payment=p;payCash.classList.toggle("on",p==="cash");payVod.classList.toggle("on",p==="vodafone")}
+function finishSale(){if(!cart.length)return alert("الفاتورة فارغة");let total=cart.reduce((a,x)=>a+x.sell*x.qty,0),cost=cart.reduce((a,x)=>a+x.buy*x.qty,0);cart.forEach(x=>products.find(p=>p.id===x.id).qty-=x.qty);sales.unshift({id:Date.now(),date:today(),time:new Date().toLocaleTimeString("ar-EG"),items:cart,total,cost,payment});save();cart=[];renderAll();alert("تم تسجيل البيع بنجاح ✅")}
+let editingProductId=null;
+function clearProductForm(){["pName","pCode","pBuy","pSell","pQty","pMin"].forEach(id=>document.getElementById(id).value="");editingProductId=null;productSaveBtn.textContent="➕ إضافة صنف";productCancelBtn.style.display="none"}
+function saveProductForm(){let name=pName.value.trim(),code=pCode.value.trim(),buy=+pBuy.value||0,sell=+pSell.value||0,qty=Math.max(0,+pQty.value||0),min=Math.max(0,+pMin.value||0);if(!name||sell<=0)return alert("أدخل اسم الصنف وسعر البيع");if(!code)code="MK"+Date.now().toString().slice(-8);if(editingProductId){let p=products.find(x=>x.id===editingProductId);if(!p)return;if(code!==editingProductId&&products.some(x=>x.id===code))return alert("الباركود مستخدم بالفعل");p.id=code;p.name=name;p.buy=buy;p.sell=sell;p.qty=qty;p.min=min;save();clearProductForm();renderAll();alert("تم تعديل الصنف بنجاح ✅");return}if(products.some(x=>x.id===code))return alert("الباركود موجود بالفعل");products.push({id:code,name,buy,sell,qty,min});save();clearProductForm();renderAll();alert("تمت إضافة الصنف بنجاح ✅")}
+function editProduct(id){let p=products.find(x=>x.id===id);if(!p)return;editingProductId=p.id;pName.value=p.name;pCode.value=p.id;pBuy.value=p.buy;pSell.value=p.sell;pQty.value=p.qty;pMin.value=p.min;productSaveBtn.textContent="💾 حفظ التعديل";productCancelBtn.style.display="inline-block";window.scrollTo({top:0,behavior:"smooth"})}
+function cancelProductEdit(){clearProductForm()}
+function deleteProduct(id){let p=products.find(x=>x.id===id);if(!p)return;if(!confirm(`حذف الصنف «${p.name}»؟`))return;products=products.filter(x=>x.id!==id);save();if(editingProductId===id)clearProductForm();renderAll();alert("تم حذف الصنف")}
+function renderStock(){let q=(stockSearch.value||"").trim().toLowerCase();let arr=products.filter(p=>(p.name||"").toLowerCase().includes(q)||String(p.id).toLowerCase().includes(q));stockList.innerHTML=arr.map(p=>`<div class="item" style="align-items:flex-start;gap:8px"><span style="flex:1"><b>${p.name}</b><br><small>باركود ${p.id} • شراء ${money(p.buy)} • بيع ${money(p.sell)} • حد التنبيه ${p.min}</small></span><span style="text-align:left"><b>${p.qty}</b> قطعة ${p.qty<=p.min?"⚠️":""}<br><span style="display:flex;gap:5px;margin-top:6px"><button onclick="editProduct('${p.id}')">✏️ تعديل</button><button class="danger" onclick="deleteProduct('${p.id}')">🗑️ حذف</button></span></span></div>`).join("")||'<div class="empty">لا يوجد صنف</div>'}
+function renderAdjustmentProducts(){let selected=adjProduct.value;adjProduct.innerHTML='<option value="">اختر الصنف</option>'+products.map(p=>`<option value="${p.id}">${p.name} — ${p.qty} قطعة</option>`).join("");if(products.some(p=>p.id===selected))adjProduct.value=selected;showAdjustmentQty();renderAdjustments()}
+function showAdjustmentQty(){let p=products.find(x=>x.id===adjProduct.value);adjCurrent.textContent=p?`الكمية الحالية: ${money(p.qty)} قطعة`:'اختر الصنف لعرض الكمية الحالية.'}
+function adjustStock(){let id=adjProduct.value,type=adjType.value,amount=Number(adjQty.value),reason=adjReason.value.trim(),p=products.find(x=>x.id===id);if(!p)return alert('اختر الصنف أولاً');if(!Number.isFinite(amount)||amount<0||!Number.isInteger(amount))return alert('أدخل كمية صحيحة');if(amount===0)return alert('أدخل كمية أكبر من صفر');let oldQty=p.qty,newQty=oldQty;if(type==='add')newQty=oldQty+amount;if(type==='subtract')newQty=oldQty-amount;if(type==='set')newQty=amount;if(newQty<0)return alert('لا يمكن أن تكون الكمية أقل من صفر');p.qty=newQty;adjustments.unshift({date:today(),time:new Date().toLocaleTimeString('ar-EG'),code:p.id,name:p.name,type,amount,oldQty,newQty,reason});save();adjQty.value='';adjReason.value='';renderAll();alert(`تم تعديل مخزون ${p.name} إلى ${newQty} قطعة ✅`)}
+function renderAdjustments(){adjustmentList.innerHTML=adjustments.slice(0,20).map(x=>`<div class="item"><span><b>${x.name}</b><br><small>${x.type==='add'?'إضافة':x.type==='subtract'?'خصم':'تحديد'} ${x.amount} قطعة • ${x.reason||'بدون سبب'} • ${x.date} ${x.time}</small></span><b>${x.oldQty} ← ${x.newQty}</b></div>`).join('')||'<div class="empty">لا توجد تعديلات للمخزون</div>'}
+function addPurchase(){let code=buyCode.value.trim(),qty=+buyQty.value,cost=+buyCost.value,p=products.find(x=>x.id===code);if(!p||qty<=0)return alert("راجع الباركود والكمية");p.qty+=qty;if(cost>0)p.buy=cost;purchases.unshift({date:today(),time:new Date().toLocaleTimeString("ar-EG"),code,qty,cost,supplier:supplier.value.trim()});save();buyCode.value=buyQty.value=buyCost.value=supplier.value="";renderAll();alert("تم تسجيل الشراء وزيادة المخزون")}
+function addExpense(){let name=expName.value.trim(),amount=+expAmount.value;if(!name||amount<=0)return alert("أدخل نوع المصروف والمبلغ");expenses.unshift({date:today(),name,amount,note:expNote.value.trim()});save();expName.value=expAmount.value=expNote.value="";renderAll();alert("تم تسجيل المصروف")}
+function renderReports(){let t=totals();rSales.textContent=money(t.sales)+" ج";rCost.textContent=money(t.cost)+" ج";rExpenses.textContent=money(t.exp)+" ج";rNet.textContent=money(t.profit)+" ج";invoiceList.innerHTML=todaySales().slice(0,20).map(x=>`<div class="item"><span>فاتورة ${x.id}<br><small>${x.time} • ${x.payment==="vodafone"?"فودافون كاش":"نقدي"}</small></span><b>${money(x.total)} ج</b></div>`).join("")||'<div class="empty">لا توجد فواتير اليوم</div>'}
+function renderPurchases(){purchaseList.innerHTML=purchases.slice(0,20).map(x=>`<div class="item"><span>${x.code} • ${x.qty} قطعة<br><small>${x.supplier||"بدون مورد"} • ${x.date}</small></span><b>${money(x.cost*x.qty)} ج</b></div>`).join("")||'<div class="empty">لا توجد مشتريات</div>'}
+function renderExpenses(){expenseList.innerHTML=todayExp().map(x=>`<div class="item"><span>${x.name}<br><small>${x.note||""}</small></span><b>${money(x.amount)} ج</b></div>`).join("")||'<div class="empty">لا توجد مصروفات اليوم</div>'}
+function renderAll(){updateHome();renderCashProducts();renderCart();renderStock();renderAdjustmentProducts();renderPurchases();renderExpenses();renderReports()}
+function exportData(){let data={products,sales,purchases,expenses,adjustments,exportedAt:new Date().toISOString()};let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="ماركت-الخير-نسخة-احتياطية.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.products)throw 0;products=d.products;sales=d.sales||[];purchases=d.purchases||[];expenses=d.expenses||[];adjustments=d.adjustments||[];save();renderAll();alert("تم استيراد البيانات")}catch{alert("ملف غير صالح")}};r.readAsText(f)}
+function resetAll(){if(confirm("سيتم حذف كل البيانات. هل أنت متأكد؟")){localStorage.clear();location.reload()}}
+async function openScanner(){scanner.style.display="block";if(!navigator.mediaDevices){scanMsg.textContent="الكاميرا غير متاحة في هذا السياق. استخدم الموقع عبر HTTPS.";return}try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}}});video.srcObject=stream;await video.play();if("BarcodeDetector" in window){let d=new BarcodeDetector();loopScan(d)}else scanMsg.textContent="قراءة الباركود المدمجة غير مدعومة في هذا المتصفح حاليًا."}catch(e){scanMsg.textContent="اسمح للمتصفح باستخدام الكاميرا."}}
+async function loopScan(d){if(scanner.style.display==="none")return;try{let c=await d.detect(video);if(c.length){cashSearch.value=c[0].rawValue;closeScanner();go("cashier");renderCashProducts();return}}catch{}requestAnimationFrame(()=>loopScan(d))}
+function closeScanner(){scanner.style.display="none";if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+renderAll();
 </script>
 </body>
 </html>
